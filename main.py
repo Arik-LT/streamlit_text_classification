@@ -29,14 +29,16 @@ text_for_model = df_exp.iloc[0, 0]
 input = tfidf.transform([text_for_model]).toarray()
 
 result = model.predict(input).toarray()
-print(result)
 
-st.subheader('This email belongs to the following classes:')
-if result[0][0] == 1:
-    st.write('· Politics')
-if result[0][1] == 1:
-    st.write('· Entertainment')
-if result[0][2] == 1:
-    st.write('· Science')
-if result[0][3] == 1:
-    st.write('· Crime')
+if len(text.split()) > 1:  
+    st.subheader('This email belongs to the following classes:')
+    if result[0][0] == 1:
+        st.write('· Politics')
+    if result[0][1] == 1:
+        st.write('· Entertainment')
+    if result[0][2] == 1:
+        st.write('· Science')
+    if result[0][3] == 1:
+        st.write('· Crime')
+else:
+    pass
